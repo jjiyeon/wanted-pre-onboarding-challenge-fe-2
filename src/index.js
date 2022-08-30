@@ -1,51 +1,67 @@
 /**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
+ * Todo type
+ * @typedef {Object} Todo
+ * @property {number} id - id
+ * @property {string} text - 할일
+ * @property {boolean} isCompleted - 완료 여부
+ * @property {string} category - 카테고리
+ * @property {string[]} [tags] - 해시태그
  */
-function Book(title, author) {}
 
 /**
- * Both of these will link to the bar function.
- * @see {@link bar}
- * @see bar
+ * Todo Item type
+ * @typedef {Object} Item
+ * @property {string} text - 할일
+ * @property {boolean} isCompleted - 완료 여부
+ * @property {string} category - 카테고리
+ * @property {string[]} [tags] - 해시태그
  */
-function foo() {}
-
-// Use the inline {@link} tag to include a link within a free-form description.
-/**
- * @see {@link foo} for further information.
- * @see {@link http://github.com|GitHub}
- */
-function bar() {}
 
 /**
- * Generic dairy product.
+ * todoApp
  * @constructor
  */
-function DairyProduct() {}
+function TodoApp() {}
+TodoApp.prototype.setState = function (state) {};
 
 /**
- * Check whether the dairy product is solid at room temperature.
- * @abstract
- * @return {boolean}
+ * 할일 생성 콜백함수
+ * @callback onCreate
+ * @returns {Todo}
  */
-DairyProduct.prototype.isSolid = function () {
-	throw new Error('must be implemented by subclass!');
-};
+/**
+ * 할일 삭제 콜백함수
+ * @callback removeAll
+ * @returns {boolean}
+ */
 
 /**
- * Cool, refreshing milk.
+ * 할일 생성
  * @constructor
- * @augments DairyProduct
+ * @param {string} element
+ * @param {onCreate} callback
+ * @param {removeAll} removeAll
  */
-function Milk() {}
+
+function TodoItem(element, onCreate, removeAll) {}
+/**
+ * 할일 컴포넌트를 render 함수
+ */
+TodoItem.prototype.render = function () {};
+/**
+ * 할일 추가
+ * @param {string} text
+ * @param {string} category
+ * @param {string[]} tags
+ */
+TodoItem.prototype.onCreate = function (text, category, tags) {};
+/**
+ * 할일 전체 삭제
+ */
+TodoItem.prototype.removeAll = function () {};
 
 /**
- * Check whether milk is solid at room temperature.
- * @return {boolean} Always returns false.
+ * 할일 리스트
+ * @constructor
  */
-Milk.prototype.isSolid = function () {
-	return false;
-};
+function TodoList() {}
